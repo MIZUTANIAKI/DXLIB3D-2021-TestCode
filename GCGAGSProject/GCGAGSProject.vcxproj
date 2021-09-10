@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cam.h" />
     <ClInclude Include="common\Vector2.h" />
     <ClInclude Include="Obj.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Scene\sceneMng.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cam.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />

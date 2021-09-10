@@ -1,4 +1,7 @@
 #pragma once
+#include <memory>
+
+class Bullet;
 
 class Cam
 {
@@ -37,5 +40,9 @@ private:
 
 	int screenSizeX_;
 	int screenSizeY_;
+
+	int lightHandle_;								//‚ ‚©‚è1ƒJƒƒ‰’ÇÕƒ‰ƒCƒg
+
+	std::unique_ptr<Bullet> bullet_;
 };
 

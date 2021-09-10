@@ -43,14 +43,7 @@ public:
 
 	void GameEnd(void);
 
-	void SetLight(int num);
-
-	VECTOR campos_;
-
 private:
-
-	int lightC_;
-
 	int fcon_;										//フレームカウント
 	static SceneMng* sInstance;						//シーンマネージャーの静的な宣言
 	bool SysInit();									//初期化
@@ -59,8 +52,6 @@ private:
 	void Draw(void);								//描画処理
 	SceneMng();
 	~SceneMng(); 
-	
-	int lightHandle_;								//あかり1カメラ追跡ライト
 
 };
 

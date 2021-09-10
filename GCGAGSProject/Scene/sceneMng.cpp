@@ -29,13 +29,10 @@ SceneMng::SceneMng() :ScreenSize{500,500}
 	SetLightAmbColor(GetColorF(1.0f, 1.0f, 1.0f, 0.0f));
 
 	fcon_ = 0;
-	campos_ = VGet(0.0f, 0.0f, 0.0f);
-	lightC_ = 0;
 
 
 	SetFogEnable(TRUE); 
 	SetFogStartEnd(1500.0f, 40000.0f);
-	lightHandle_ = CreateDirLightHandle(VGet(0.0f, -1.0f, 0.0f));
 	
 	lpobjlMng.Create();
 }
@@ -47,21 +44,6 @@ SceneMng::~SceneMng()
 void SceneMng::GameEnd(void)
 {
 }
-
-void SceneMng::SetLight(int num)
-{
-	int tm = 255 - num;
-	if (tm > 255)
-	{
-		tm = 255;
-	}
-	if (tm < 0)
-	{
-		tm = 0;
-	}
-	lightC_ = tm;
-}
-
 
 void SceneMng::Draw(void)
 {
@@ -82,9 +64,6 @@ void SceneMng::Run(void)
 	{
 		//for (int i = 0; i < 2; i++)
 		{
-			//SetLightDirectionHandle(lightHandle_, campos_);
-			SetLightPositionHandle(lightHandle_, campos_);
-
 			activeScene_ = (*activeScene_).Update(std::move(activeScene_));
 		}
 

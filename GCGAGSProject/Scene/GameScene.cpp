@@ -31,8 +31,8 @@ GameScene::~GameScene()
 
 void GameScene::Draw(void)
 {
-	DrawCube3D(VGet(-100, 0, -100), VGet(100, 0, 100), 0x0000ff, 0x0000ff, true);
-	DrawSphere3D(VGet(0, 0, 0), 2, 2, 0xff, 0xff, true);
+	DrawCube3D(VGet(-100, -20, -100), VGet(100, -10, 100), 0xaf00ff, 0xaf00ff, true);
+
 	camera_->Draw();
 }
 
