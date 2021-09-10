@@ -37,19 +37,25 @@ public:
 		return fcon_; 
 	}
 
-	void Run(void);									//実行処理
-
-	const Vector2 ScreenSize;						//画面サイズ
-
-	void GameEnd(void);
+	/// <summary>
+	/// 実行処理
+	/// </summary>
+	/// <param name=""></param>
+	void Run(void);									
 
 private:
-	int fcon_;										//フレームカウント
-	static SceneMng* sInstance;						//シーンマネージャーの静的な宣言
-	bool SysInit();									//初期化
-	UNBS activeScene_;						//今動いてるsceneが入る。
+	const Vector2 ScreenSize;		//画面サイズ
 
-	void Draw(void);								//描画処理
+	int fcon_;						//フレームカウント
+	static SceneMng* sInstance;		//シーンマネージャーの静的な宣言
+	bool SysInit();					//初期化処理
+	UNBS activeScene_;				//今動いてるsceneが入る。
+
+	/// <summary>
+	/// 描画関連
+	/// </summary>
+	/// <param name=""></param>
+	void Draw(void);
 	SceneMng();
 	~SceneMng(); 
 

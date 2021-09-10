@@ -41,10 +41,6 @@ SceneMng::~SceneMng()
 {
 }
 
-void SceneMng::GameEnd(void)
-{
-}
-
 void SceneMng::Draw(void)
 {
 	DxLib::ClsDrawScreen();
@@ -62,6 +58,7 @@ void SceneMng::Run(void)
 	fcon_ = NULL;
 	while (ProcessMessage() == 0&&CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
+		lpobjlMng.ReSetD();
 		//for (int i = 0; i < 2; i++)
 		{
 			activeScene_ = (*activeScene_).Update(std::move(activeScene_));

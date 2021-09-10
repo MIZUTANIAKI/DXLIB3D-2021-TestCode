@@ -149,7 +149,6 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Cam.h" />
     <ClInclude Include="common\Vector2.h" />
-    <ClInclude Include="Obj.h" />
     <ClInclude Include="objmnj.h" />
     <ClInclude Include="Scene\BaseScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
@@ -159,7 +158,6 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Cam.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Obj.cpp" />
     <ClCompile Include="objmnj.cpp" />
     <ClCompile Include="Scene\BaseScene.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />

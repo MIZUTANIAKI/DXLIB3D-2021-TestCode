@@ -15,9 +15,25 @@ class BaseScene
 {
 public:
 	BaseScene();
-	virtual UNBS Update(UNBS own) = 0;	//シーンを、更新する。
+	/// <summary>
+	/// 更新処理
+	/// </summary>
+	/// <param name="own">今流れているシーン</param>
+	/// <returns></returns>
+	virtual UNBS Update(UNBS own) = 0;
 	virtual ~BaseScene(); 
+
+	/// <summary>
+	/// 描画処理
+	/// </summary>
+	/// <param name=""></param>
 	virtual void Draw(void) = 0;
+
+	/// <summary>
+	/// シーン種別取得
+	/// </summary>
+	/// <param name=""></param>
+	/// <returns></returns>
 	virtual SCN_ID GetSCNID_(void);
 protected:
 	SCN_ID scnID_;

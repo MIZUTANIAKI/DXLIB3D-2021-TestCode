@@ -18,21 +18,21 @@ void Objmnj::DrawNaw(void)
 	
 	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_SEMITRANS_ONLY);
 	
-	//‚·‚¯‚é‚Ì‚ð•`‰æ
-	DxLib::SetDrawBlendMode(DX_BLENDMODE_ALPHA, 150);
-	
-	for (auto dQue : drawListnex_)
-	{
-		DxLib::MV1DrawModel(dQue);
-	}
+	////‚·‚¯‚é‚Ì‚ð•`‰æ
+	//DxLib::SetDrawBlendMode(DX_BLENDMODE_ALPHA, 150);
+	//
+	//for (auto dQue : drawListnex_)
+	//{
+	//	DxLib::MV1DrawModel(dQue);
+	//}
 
-	DxLib::SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 255);
+	//DxLib::SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 255);
 }
 
 void Objmnj::ReSetD(void)
 {
 	drawList_.clear();
-	drawListnex_.clear();
+	//drawListnex_.clear();
 }
 
 void Objmnj::Setobjpos(VECTOR pos, int mv1)

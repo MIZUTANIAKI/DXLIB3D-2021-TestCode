@@ -8,7 +8,7 @@ int Fov;
 Cam::Cam()
 {
 	GetDrawScreenSize(&screenSizeX_,&screenSizeY_);
-	cameraYaw_speed_ = 0.001f;
+	cameraRotate_speed_ = 0.001f;
 	cameraMove_speed_ = 0.01f;
 	rotate_speed_ = DX_PI_F / 60;
 	yaw_ = 0.0f;
@@ -44,39 +44,10 @@ void Cam::Update(void)
 
 	SetLightPositionHandle(lightHandle_, camPos_);
 
-	target_ = camPos_;
+	MoveUpdate();
 
-	if (CheckHitKey(KEY_INPUT_W))
-	{
-		camPos_.x += sinf(yaw_) * cameraMove_speed_;
-		camPos_.z += cosf(yaw_) * cameraMove_speed_;
-	}
+	MouseMove();
 
-	if (CheckHitKey(KEY_INPUT_S))
-	{
-		camPos_.x -= sinf(yaw_) * cameraMove_speed_;
-		camPos_.z -= cosf(yaw_) * cameraMove_speed_;
-	}
-
-	if (CheckHitKey(KEY_INPUT_A))
-	{
-		camPos_.x += sinf(yaw_ - DX_PI_F / 2) * cameraMove_speed_;
-		camPos_.z += cosf(yaw_ - DX_PI_F / 2) * cameraMove_speed_;
-	}
-
-	if (CheckHitKey(KEY_INPUT_D))
-	{
-		camPos_.x += sinf(yaw_ + DX_PI_F / 2) * cameraMove_speed_;
-		camPos_.z += cosf(yaw_ + DX_PI_F / 2) * cameraMove_speed_;
-	}
-
-
-	MouseReset();
-
-	if (GetMouseInput() & MOUSE_INPUT_1)
-	{
-		bullet_->BulletFire(camPos_, target_);
-	}
 }
 
 void Cam::Draw(void)
@@ -106,38 +77,61 @@ void Cam::Draw(void)
 
 }
 
-void Cam::MouseReset()
-{	
+void Cam::MoveUpdate(void)
+{
+	target_ = camPos_;
 
+	if (CheckHitKey(KEY_INPUT_W))
+	{
+		camPos_.x += sinf(yaw_) * cameraMove_speed_;
+		camPos_.z += cosf(yaw_) * cameraMove_speed_;
+	}
+
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+		camPos_.x -= sinf(yaw_) * cameraMove_speed_;
+		camPos_.z -= cosf(yaw_) * cameraMove_speed_;
+	}
+
+	if (CheckHitKey(KEY_INPUT_A))
+	{
+		camPos_.x += sinf(yaw_ - DX_PI_F / 2) * cameraMove_speed_;
+		camPos_.z += cosf(yaw_ - DX_PI_F / 2) * cameraMove_speed_;
+	}
+
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+		camPos_.x += sinf(yaw_ + DX_PI_F / 2) * cameraMove_speed_;
+		camPos_.z += cosf(yaw_ + DX_PI_F / 2) * cameraMove_speed_;
+	}
+
+	if (GetMouseInput() & MOUSE_INPUT_1)
+	{
+		bullet_->BulletFire(camPos_, target_);
+	}
+}
+
+void Cam::MouseMove()
+{
 	GetMousePoint(&mousePosX_, &mousePosY_);
 	mouseMovePosX_ = mousePosX_ - mouse_SizeX_;
 	mouseMovePosY_ = mousePosY_ - mouse_SizeY_;
-	if (mouseMovePosX_ > 2|| mouseMovePosX_ < -2)
+	if (mouseMovePosX_ > 2 || mouseMovePosX_ < -2)
 	{
-		yaw_ += mouseMovePosX_ * cameraYaw_speed_;
+		yaw_ += mouseMovePosX_ * cameraRotate_speed_;
 	}
 
-	/*if (mouseMovePosX_ != 0)
-	{
-	}
-	else
-	{
-		if (yaw_ != 0.0f)
-		{
-			yaw_ -= yaw_ / 10;
-			if (yaw_ < 0.05f)
-			{
-				yaw_ = 0;
-			}
-		}
-	}*/
-
-	pih_ += mouseMovePosY_* cameraYaw_speed_;
+	pih_ += mouseMovePosY_ * cameraRotate_speed_;
 
 	target_.x += sinf(yaw_);
-	target_.y = -pih_ ;
+	target_.y = -pih_;
 	target_.z += cosf(yaw_);
 
+	CameraUpdate();
+}
+
+void Cam::CameraUpdate()
+{	
 	SetCameraPositionAndTarget_UpVecY(camPos_, target_);
 
 	SetMousePoint(mouse_SizeX_, mouse_SizeY_);

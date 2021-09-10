@@ -7,12 +7,12 @@ class GameScene :
 	public BaseScene
 {
 public:
-	UNBS Update(UNBS own) override;		//シーンを、更新する。
+	UNBS Update(UNBS own) override;
 	GameScene();
 	~GameScene();
 	void Draw(void)override;
 	SCN_ID GetSCNID_(void)override;
 private:
-	std::unique_ptr<Cam> camera_;
+	std::unique_ptr<Cam> camera_;		//カメラ格納先
 };
 

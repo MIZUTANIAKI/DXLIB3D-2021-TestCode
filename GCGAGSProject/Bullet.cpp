@@ -19,6 +19,11 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
+	for (auto& bullet : bulletDat_)
+	{
+		delete& bullet;
+	}
+	delete &bulletDat_;
 }
 
 void Bullet::Updata(void)

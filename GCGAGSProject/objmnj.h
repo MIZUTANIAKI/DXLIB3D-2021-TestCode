@@ -1,6 +1,5 @@
 #pragma once
-#define CPU_MAX 9
-#include "obj.h"
+//#define CPU_MAX 9
 
 
 //#define CHARA_MAX_HITCOLL			2048		// 処理するコリジョンポリゴンの最大数
@@ -40,24 +39,46 @@ public:
 		sInstance = nullptr;
 	}
 	
+	/// <summary>
+	/// モデルを一斉描画させる。メインループで読んでる場合触らないでOK
+	/// </summary>
+	/// <param name=""></param>
 	void DrawNaw(void);
 
-	void ReSetD(void);	//毎フレーム最初に呼ぶ
+	/// <summary>
+	/// 毎フレーム最初に呼ぶんですが、メインループで読んでる場合触らないでOK
+	/// </summary>
+	/// <param name=""></param>
+	void ReSetD(void);
 
+	/// <summary>
+	/// 3Dモデルの位置情報を設定できます！
+	/// </summary>
+	/// <param name="pos">座標</param>
+	/// <param name="mv1">mv1モデルのハンドル</param>
 	void Setobjpos(VECTOR pos,int mv1);	//位置情報をセット					
 
-	void ObjDraw(int mv1);								//これを呼ぶと、描画要求を、sceneマネージャにします
+	/// <summary>
+	/// 3Dモデル描画させる！
+	/// </summary>
+	/// <param name="mv1">mv1モデルのハンドル</param>
+	void ObjDraw(int mv1);
 
-	void ObjRotation(int mv1,float moveangle);			//回転情報（見た目）をセット
+	/// <summary>
+	/// MV1モデルを回転させますよー
+	/// </summary>
+	/// <param name="mv1">mv1モデルのハンドル</param>
+	/// <param name="moveangle">角度ください。</param>
+	void ObjRotation(int mv1,float moveangle);
 
-	//bool ObjCollHit(VECTOR pos, UNIT_ID id);		//当たり判定チェック用
+	//bool ObjCollHit(VECTOR pos, UNIT_ID id);		//当たり判定チェック用　だったんですけどーだったというか作ってないですねー
 
 private:
 	static Objmnj* sInstance;
 
 
 	std::vector<int> drawList_;						//描画するものを溜めておくキュー
-	std::vector<int> drawListnex_;					//描画するものを溜めておくキュー（すける）
+	//std::vector<int> drawListnex_;					//描画するものを溜めておくキュー（すける）
 
 	Objmnj();
 	~Objmnj();
