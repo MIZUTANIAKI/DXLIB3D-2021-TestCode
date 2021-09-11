@@ -4,13 +4,22 @@
 
 Bullet::Bullet()
 {
-	for (auto& bullet : bulletDat_)
+	//for (auto& bullet : bulletDat_)
+	//{
+	//	bullet.pos_ = std::move(VGet(0.0f, 0.0f, 0.0f));
+	//	bullet.bulletSpeed_ = std::move(VGet(0.0f, 0.0f, 0.0f));
+	//	bullet.count_ = 0;
+	//	bullet.fire_ = false;
+	//}
+
+	for (int bulletnum = 0; bulletnum < bulletDat_.size(); bulletnum++)
 	{
-		bullet.fire_ = false;
-		bullet.pos_ = std::move(VGet(0.0f, 0.0f, 0.0f));
-		bullet.count_ = 0;
-		bullet.bulletSpeed_ = std::move(VGet(0.0f, 0.0f, 0.0f));
+		bulletDat_[bulletnum].pos_ = std::move(VGet(0.0f, 0.0f, 0.0f));
+		bulletDat_[bulletnum].bulletSpeed_ = std::move(VGet(0.0f, 0.0f, 0.0f));
+		bulletDat_[bulletnum].count_ = 0;
+		bulletDat_[bulletnum].fire_ = false;
 	}
+
 	bulletCount_ = 0;
 	derayTime_ = 0;
 	reLoadTime_ = 0;
@@ -19,11 +28,6 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
-	for (auto& bullet : bulletDat_)
-	{
-		delete& bullet;
-	}
-	delete &bulletDat_;
 }
 
 void Bullet::Updata(void)
@@ -91,10 +95,15 @@ void Bullet::BulletFire(VECTOR pos, VECTOR targetdir)
 				auto& bullet = bulletDat_[bulletCount_];
 				bullet.fire_ = true;
 				bullet.count_ = 0;
-				bullet.bulletSpeed_ = VSub(std::move(targetdir), pos);
-				bullet.pos_ = std::move(pos);
+				bullet.bulletSpeed_ = VSub(targetdir, pos);
+				bullet.pos_ = pos;
 				bulletCount_++;
 				derayTime_++;
+
+
+				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
+				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
+				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
 			}
 			else
 			{
