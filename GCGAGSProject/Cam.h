@@ -3,6 +3,9 @@
 
 class Bullet;
 
+/// <summary>
+/// プレイヤーのカメラクラスです。
+/// </summary>
 class Cam
 {
 public:
@@ -18,7 +21,7 @@ public:
 	void Update(void);
 
 	/// <summary>
-	/// 描画関連 （レティクル書いてるとこー）
+	/// 描画関連
 	/// </summary>
 	/// <param name=""></param>
 	void Draw(void);
