@@ -31,7 +31,7 @@ private:
 	void MoveUpdate(void);
 
 	/// <summary>
-	/// マウス情報からカメラ情報を生成！
+	/// マウス情報からカメラ情報を生成しています
 	/// </summary>
 	void MouseMove();
 
