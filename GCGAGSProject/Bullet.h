@@ -1,6 +1,12 @@
 #pragma once
 #include <array>
 
+/*
+	銃のクラスサンプルです。
+	発射処理の発射元座標と向かう方向を設定すれば、
+	敵からも発射可能です。
+*/
+
 /// <summary>
 /// 弾丸一つひとつのデータ
 /// </summary>
@@ -38,7 +44,7 @@ public:
 	/// 連射対応しています。
 	/// マイフレーム呼んでいても、必ず間隔をあけて発射します。
 	/// </summary>
-	/// <param name="pos">元座標</param>
+	/// <param name="pos">発射元座標</param>
 	/// <param name="movedir">進むべき方向</param>
 	void BulletFire(VECTOR pos, VECTOR movedir);
 private:

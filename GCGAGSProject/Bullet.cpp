@@ -102,8 +102,6 @@ void Bullet::BulletFire(VECTOR pos, VECTOR targetdir)
 
 
 				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
-				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
-				bullet.pos_ = VAdd(bullet.pos_, bullet.bulletSpeed_);
 			}
 			else
 			{

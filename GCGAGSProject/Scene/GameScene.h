@@ -1,7 +1,8 @@
 #pragma once
 #include "BaseScene.h"
-#include "../Obj.h"
 #include "../Cam.h"
+
+class ExampleMap;
 
 class GameScene :
 	public BaseScene
@@ -14,5 +15,7 @@ public:
 	SCN_ID GetSCNID_(void)override;
 private:
 	std::unique_ptr<Cam> camera_;		//ƒJƒƒ‰Ši”[æ
+
+	ExampleMap* exampleMap;
 };
 
