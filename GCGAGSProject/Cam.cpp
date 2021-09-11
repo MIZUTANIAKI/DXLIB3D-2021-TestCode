@@ -10,7 +10,6 @@ Cam::Cam()
 	GetDrawScreenSize(&screenSizeX_,&screenSizeY_);
 	cameraRotate_speed_ = 0.001f;
 	cameraMove_speed_ = 0.01f;
-	rotate_speed_ = DX_PI_F / 60;
 	yaw_ = 0.0f;
 	camPos_ = VGet(0.0f, 0.0f, -10.0f);
 	target_ = VGet(0.0f, 0.0f, 0.0f);
@@ -79,7 +78,6 @@ void Cam::Draw(void)
 
 void Cam::MoveUpdate(void)
 {
-	target_ = camPos_;
 
 	if (CheckHitKey(KEY_INPUT_W))
 	{
@@ -109,10 +107,13 @@ void Cam::MoveUpdate(void)
 	{
 		bullet_->BulletFire(camPos_, target_);
 	}
+
 }
 
 void Cam::MouseMove()
 {
+	target_ = camPos_;
+
 	GetMousePoint(&mousePosX_, &mousePosY_);
 	mouseMovePosX_ = mousePosX_ - mouse_SizeX_;
 	mouseMovePosY_ = mousePosY_ - mouse_SizeY_;
