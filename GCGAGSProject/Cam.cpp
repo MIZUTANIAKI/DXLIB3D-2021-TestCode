@@ -1,4 +1,7 @@
 #include <math.h>
+#include <memory>
+#include <vector>
+#include <map>
 #include <DxLib.h>
 #include "Bullet.h"
 #include "Cam.h"
@@ -28,8 +31,11 @@ Cam::Cam()
 
 
 	//lightHandle_ = CreateDirLightHandle(VGet(0.0f, -1.0f, 0.0f));
-	lightHandle_ = CreatePointLightHandle(camPos_,500.0f, 0.0f, 0.0f,0.02f);
-
+	//lightHandle_ = CreatePointLightHandle(camPos_,0.1f, 1.0f, 0.5f,0.05f);
+	lightHandle_ = CreateSpotLightHandle(camPos_, VSub(target_, camPos_), DX_PI_F / 2.0f,DX_PI_F / 4.0f, 10.0f, 0.5f, 0.002f,0.0005f);
+	SetLightDifColorHandle(lightHandle_, GetColorF(0.2f, 0.2f, 0.2f, 0.0f));
+	//SetLightSpcColorHandle(lightHandle_, GetColorF(1.0f, 1.0f, 1.0f, 0.0f));
+	//SetLightAmbColorHandle(lightHandle_, GetColorF(1.0f, 1.0f, 1.0f, 0.0f));
 	bullet_ = std::make_unique<Bullet>();
 }
 
@@ -42,6 +48,7 @@ void Cam::Update(void)
 	bullet_->Updata();
 
 	SetLightPositionHandle(lightHandle_, camPos_);
+	SetLightDirectionHandle(lightHandle_, VSub(target_, camPos_));
 
 	MoveUpdate();
 

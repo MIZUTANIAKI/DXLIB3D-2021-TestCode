@@ -1,5 +1,7 @@
 #include <vector>
 #include <tuple>
+#include <string>
+#include <map>
 #include <DxLib.h>
 #include "sceneMng.h"
 #include "GameScene.h"
@@ -11,7 +13,9 @@ SceneMng* SceneMng::sInstance = nullptr;
 
 SceneMng::SceneMng() :ScreenSize{500,500}
 {
-	SetWindowText("‹N“®");
+	SetWindowText("‹N“®"); 
+	
+	SetLightEnable(FALSE);
 
 	SetChangeScreenModeGraphicsSystemResetFlag(FALSE);
 	SetUseZBuffer3D(TRUE);
@@ -44,10 +48,11 @@ SceneMng::~SceneMng()
 void SceneMng::Draw(void)
 {
 	DxLib::ClsDrawScreen();
-	activeScene_->Draw();
-	
 	lpobjlMng.DrawNaw();
 
+
+	activeScene_->Draw();
+	
 	DxLib::ScreenFlip();
 }
 
